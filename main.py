@@ -110,7 +110,7 @@ class CodeHelper(object):
                     remainSnip = snipSplitByEnd_lt[1]
                 else:
                     ''' Non end symbol mode '''
-                    remainSnip = ''
+                    remainSnip = snipSplitByEnd_lt[0]
                 
                 tmp_str = '%s %s\n'%(
                     SYMBOL__PY_DICT_START

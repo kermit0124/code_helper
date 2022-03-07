@@ -2,7 +2,7 @@
 
 Author: Kermit Chen
 
-Doc rev: 000
+Doc rev: 001
 
 
 
@@ -34,18 +34,17 @@ Doc rev: 000
 1. Parse all python script block
 2. Generate a `_temp.py` with script
 3. Find the insert block in your file
-4. Insert the snippet by python dictionary
+4. Insert the snippet by python return dictionary
 
 
 
-## Write python script with symbol
+**NOTICE:**
 
-- first function is `get_dict()`
-- return dictionary
+- Python script first function is `get_dict()`
+- **Return must be a dictionary**
   - key: snippet name
   - value: insert snippet
-
-
+- Insert block is match the name with **dictionary key** when render the code
 
 
 
@@ -81,6 +80,15 @@ Call start symbol with snippet name, auto generate code in there after python ru
 
 
 
+#### For example
+
+```
+//[::pys::] <render_dict_name>
+**DON'T MODIFY HERE!!**
+**Run script will be regenerated every time.**
+//[::pye::]
+```
+
 
 
 
@@ -89,16 +97,16 @@ Call start symbol with snippet name, auto generate code in there after python ru
 
 ```
 //[::pys::]
-def get_dict
+def get_dict():
     reDict = {}
     
-    reDict['A'] = funcA()
-    reDict['B'] = funcB()
+    reDict['snipA'] = funcA()
+    reDict['snipB'] = funcB()
     
     t = ''
     for i in range(10):
     	t += str(i)
-    reDict['C'] = t
+    reDict['snipC'] = t
 
     return reDict
 //[::pye::]
@@ -106,7 +114,7 @@ def get_dict
 
 ...
 
-//[::pds::] C
+//[::pds::] snipC
 
 //[::pde::]
 ```
@@ -114,7 +122,7 @@ def get_dict
 after run python to render
 
 ```
-//[::pds::] C
+//[::pds::] snipC
 0123456789
 //[::pde::]
 ```
